@@ -21,18 +21,29 @@
       <nav class="navbar">
         <a href="../index.html" style="--i: 1" class="active">Home</a>
         <a href="Learn.html" style="--i: 2">Learn</a>
-        <a href="index.html" style="--i: 3">Game</a>
+        <a href="game.html" style="--i: 3">Game</a>
         <a href="index2.html" style="--i: 4">Find The Sign</a>
         <a href="Test.html" style="--i: 5">Test</a>
       </nav>
     </div>
+
+    <section></section>
+
+    <!-- Main content starts here -->
     <div class="container">
-      <h1 class="glass-heading">Find The Sign!</h1>
+      <h1 class="glass-heading">Guess The Sign!</h1>
+      <div id="score-container">Score: <span id="score">0</span>/10</div>
 
       <div class="quiz-box">
         <div id="question-number">
-          <b>Type an alphabet, word, or sentence to see its sign:</b>
+          Question <span id="current-question">1</span> of 10
         </div>
+        <img
+          id="signImage"
+          class="sign-image"
+          src=""
+          alt="Sign Language Image"
+        />
 
         <div class="input-container">
           <input
@@ -43,16 +54,11 @@
           />
           <button id="submitAnswer" onclick="submitAnswer()">Submit</button>
         </div>
-
-        <img
-          id="signImage"
-          class="sign-image"
-          src=""
-          alt="Sign Language Image"
-        />
-
-        <div id="message"></div>
       </div>
+
+      <div id="message"></div>
+
+      <div id="end-message"></div>
 
       <div class="keypad">
         <div class="key-row">
@@ -108,15 +114,14 @@
       </div>
     </div>
 
-    <script src="Javascript/script2.js"></script>
+    <script src="Javascript/script.js"></script>
     <script>
-        const burgerMenu = document.querySelector(".burger-menu");
-        const header = document.querySelector(".header");
-  
-        burgerMenu.addEventListener("click", () => {
-          header.classList.toggle("active");
-        });
-      </script>
-    </body>
+      const burgerMenu = document.querySelector(".burger-menu");
+      const header = document.querySelector(".header");
+
+      burgerMenu.addEventListener("click", () => {
+        header.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>
