@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Language Quiz Game</title>
-    <link rel="stylesheet" href="public/Style/styles.css" />
+   
+    <link rel="stylesheet" href="public/Style/home.css" />
   </head>
   <body>
     <div class="header">
@@ -26,6 +27,68 @@
         <a href="public/Test.html" style="--i: 5">Test</a>
       </nav>
     </div>
+    <section class="home" id="home"></section>
+      <div class="home-img">
+        <img src="public/images/nice.gif" alt="" />
+      </div>
+      <div class="home-content">
+        <h3>Hello,<span class="wave"> 👋</span> And</h3>
+        <h3 id="dynamic-text"></h3>
+        <p>
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus nihil amet quam saepe, deleniti fuga sed. Magnam illum architecto commodi nam ab dolorum consectetur aspernatur ipsum tempora, non eveniet totam.
+        </p>
+        
+      </div>
+    </section>
+    
+
+    <script>
+      const texting = "Nice to Meet You";
+
+      function speakText(texting, times) {
+          const synth = window.speechSynthesis;
+
+          for (let i = 0; i < times; i++) {
+              const utterance = new SpeechSynthesisUtterance(texting);
+              utterance.pitch = 2;
+              utterance.rate = 0.5; 
+              
+            
+              const delay = i * 2000; 
+              setTimeout(() => {
+                  synth.speak(utterance);
+              }, delay);
+          }
+      }
+
+      // Call the function to speak text 2 times
+      speakText(texting, 2);
+  </script>
+   
+    <script>
+      const text = "Nice to Meet You";
+
+      const words = text.split(" ");
+      const container = document.getElementById("dynamic-text");
+      let index = 0;
+      
+      function typeWord() {
+          if (index < words.length) {
+              container.innerHTML += `<span class="word">${words[index]}</span> `;
+              index++;
+              setTimeout(typeWord, 1000);
+          } else {
+              setTimeout(() => {
+                  container.innerHTML = "";
+                  index = 0;
+                  typeWord();
+              }, 2000);
+          }
+      }
+
+      typeWord();
+  </script>
+  
 
     <script>
       const burgerMenu = document.querySelector(".burger-menu");
