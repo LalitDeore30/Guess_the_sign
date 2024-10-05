@@ -46,7 +46,9 @@ function submitAnswer() {
 
     for (const question of questions) {
         if (userAnswer === question.answer.replace(/\s+/g, '')) {
-            document.getElementById('signImage').src = question.src;
+            const signImage = document.getElementById('signImage');
+            signImage.src = question.src;
+            signImage.style.display = 'block'; // Ensure the image is visible
             document.getElementById('message').textContent = `Displaying: ${question.answer}`;
             found = true;
 
@@ -59,8 +61,6 @@ function submitAnswer() {
             break;
         }
     }
-
-
 
     if (!found) {
         document.getElementById('message').textContent = 'No matching sign found!';

@@ -21,12 +21,100 @@
       <nav class="navbar">
         <a href="../index.html" style="--i: 1" class="active">Home</a>
         <a href="Learn.html" style="--i: 2">Learn</a>
-        <a href="index.html" style="--i: 3">Game</a>
+        <a href="game.html" style="--i: 3">Game</a>
         <a href="index2.html" style="--i: 4">Find The Sign</a>
         <a href="Test.html" style="--i: 5">Test</a>
       </nav>
     </div>
 
+    <section></section>
+
+    <!-- Main content starts here -->
+    <div class="container">
+      <h1 class="glass-heading">Guess The Sign!</h1>
+      <div id="score-container">Score: <span id="score">0</span>/10</div>
+
+      <div class="quiz-box">
+        <div id="question-number">
+          Question <span id="current-question">1</span> of 10
+        </div>
+        <img
+          id="signImage"
+          class="sign-image"
+          src=""
+          alt="Sign Language Image"
+        />
+
+        <div class="input-container">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type here..."
+            autofocus
+          />
+          <button id="submitAnswer" onclick="submitAnswer()">Submit</button>
+        </div>
+      </div>
+
+      <div id="message"></div>
+
+      <div id="end-message"></div>
+
+      <div class="keypad">
+        <div class="key-row">
+          <button onclick="enterLetter('A')">A</button>
+          <button onclick="enterLetter('B')">B</button>
+          <button onclick="enterLetter('C')">C</button>
+          <button onclick="enterLetter('D')">D</button>
+          <button onclick="enterLetter('E')">E</button>
+          <button onclick="enterLetter('F')">F</button>
+          <button onclick="enterLetter('G')">G</button>
+        </div>
+        <div class="key-row">
+          <button onclick="enterLetter('H')">H</button>
+          <button onclick="enterLetter('I')">I</button>
+          <button onclick="enterLetter('J')">J</button>
+          <button onclick="enterLetter('K')">K</button>
+          <button onclick="enterLetter('L')">L</button>
+          <button onclick="enterLetter('M')">M</button>
+          <button onclick="enterLetter('N')">N</button>
+        </div>
+        <div class="key-row">
+          <button onclick="enterLetter('O')">O</button>
+          <button onclick="enterLetter('P')">P</button>
+          <button onclick="enterLetter('Q')">Q</button>
+          <button onclick="enterLetter('R')">R</button>
+          <button onclick="enterLetter('S')">S</button>
+          <button onclick="enterLetter('T')">T</button>
+          <button onclick="enterLetter('U')">U</button>
+        </div>
+        <div class="key-row">
+          <button onclick="enterLetter('V')">V</button>
+          <button onclick="enterLetter('W')">W</button>
+          <button onclick="enterLetter('X')">X</button>
+          <button onclick="enterLetter('Y')">Y</button>
+          <button onclick="enterLetter('Z')">Z</button>
+        </div>
+        <div class="key-row">
+          <button
+            style="width: 200px"
+            class="space-button"
+            onclick="enterLetter(' ')"
+          >
+            Space
+          </button>
+          <button
+            style="width: 80px"
+            class="delete-button"
+            onclick="deleteLetter()"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="Javascript/script.js"></script>
     <script>
       const burgerMenu = document.querySelector(".burger-menu");
       const header = document.querySelector(".header");
