@@ -149,6 +149,14 @@ body {
     .burger-menu {
         display: block; 
     }
+
+    #test2 {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        height: 160vh; 
+        text-align: center; 
+      }
 }
 
 /* KEYFRAMES ANIMATION */
