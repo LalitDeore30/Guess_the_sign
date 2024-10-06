@@ -86,7 +86,32 @@ body {
     transform: translateY(-8px) rotate(45deg);
 }
 
+#footer {
+    background-color: #3AB0FF;
+    color: #333;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+  
+#footer p {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 2px;
+}
 
+#icon {
+  display: flex;
+  justify-content: center;
+}
+.ic1 {
+  margin: 6px;
+  color: #fff;
+  padding: 0 0.7rem;
+  cursor: pointer;
+}
 
 
 @media (max-width: 768px) {
@@ -238,6 +263,8 @@ button:hover {
     border: 1px solid rgba(255, 255, 255, 0.5);
     margin-top: 100px;
 }
+
+
 
 @media (max-width: 768px) {
     .container {
