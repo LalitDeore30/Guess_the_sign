@@ -3,16 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Language Quiz Game</title>
+    <title>Text to Sign Language</title>
+
+    <!-- Boxicons CDN -->
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="Style/speech.css" />
     <link rel="stylesheet" href="Style/styles.css" />
   </head>
   <body>
     <div class="header">
-      <a href="../index.html" class="logo"><img src="images/community.png" /></a>
+      <a href="../index.html" class="logo"
+        ><img src="images/community.png"
+      /></a>
 
       <!-- Burger menu -->
       <div class="burger-menu" onclick="toggleNavbar()">
@@ -22,7 +27,7 @@
       </div>
 
       <!-- Navigation links -->
-      <nav class="navbar">
+      <nav class="navbar text_speech">
         <a href="../index.html" style="--i: 1" class="active">Home</a>
         <a href="Learn.html" style="--i: 2">Learn</a>
         <a href="game.html" style="--i: 3">Game</a>
@@ -30,90 +35,40 @@
         <a href="Test.html" style="--i: 5">Test</a>
       </nav>
     </div>
-    <section id="test2">
-    <div class="container">
-      <h1 class="glass-heading">Find The Sign!</h1>
+    <section id="speech">
+      <div class="content">
+        <h1 class="glass-heading">Convert Text to Sign Language</h1>
 
-      <div class="quiz-box">
-        <div id="question-number">
-          <b>Type an alphabet, word, or sentence to see its sign:</b>
-        </div>
-
+        <!-- Input Section -->
         <div class="input-container">
-          <input
-            type="text"
-            id="userInput"
-            placeholder="Type here..."
-            autofocus
-          />
-          <button id="submitAnswer" onclick="submitAnswer()">Submit</button>
-        </div>
-        <div class="image-container">
-          <img
-          id="signImage"
-          class="sign-image"
-          src=""
-          alt="Sign Language Image"
-           />
-        </div>
-
-        <div id="message"></div>
-      </div>
-
-      <div class="keypad">
-        <div class="key-row">
-          <button onclick="enterLetter('A')">A</button>
-          <button onclick="enterLetter('B')">B</button>
-          <button onclick="enterLetter('C')">C</button>
-          <button onclick="enterLetter('D')">D</button>
-          <button onclick="enterLetter('E')">E</button>
-          <button onclick="enterLetter('F')">F</button>
-          <button onclick="enterLetter('G')">G</button>
-        </div>
-        <div class="key-row">
-          <button onclick="enterLetter('H')">H</button>
-          <button onclick="enterLetter('I')">I</button>
-          <button onclick="enterLetter('J')">J</button>
-          <button onclick="enterLetter('K')">K</button>
-          <button onclick="enterLetter('L')">L</button>
-          <button onclick="enterLetter('M')">M</button>
-          <button onclick="enterLetter('N')">N</button>
-        </div>
-        <div class="key-row">
-          <button onclick="enterLetter('O')">O</button>
-          <button onclick="enterLetter('P')">P</button>
-          <button onclick="enterLetter('Q')">Q</button>
-          <button onclick="enterLetter('R')">R</button>
-          <button onclick="enterLetter('S')">S</button>
-          <button onclick="enterLetter('T')">T</button>
-          <button onclick="enterLetter('U')">U</button>
-        </div>
-        <div class="key-row">
-          <button onclick="enterLetter('V')">V</button>
-          <button onclick="enterLetter('W')">W</button>
-          <button onclick="enterLetter('X')">X</button>
-          <button onclick="enterLetter('Y')">Y</button>
-          <button onclick="enterLetter('Z')">Z</button>
-        </div>
-        <div class="key-row">
-          <button
-            style="width: 200px"
-            class="space-button"
-            onclick="enterLetter(' ')"
-          >
-            Space
-          </button>
-          <button
-            style="width: 80px"
-            class="delete-button"
-            onclick="deleteLetter()"
-          >
-            Delete
+          <input type="text" id="textInput" placeholder="Enter text here..." />
+          <button id="micButton" onclick="startSpeechRecognition()">
+            <i class="bx bxs-microphone"></i>
           </button>
         </div>
+
+        <button class="convert" onclick="convertToSignLanguage()">
+          Convert to Sign Language
+        </button>
+
+        <!-- Container for one-by-one display -->
+        <div id="timeLapseContainer">
+          <div id="signContainer"></div>
+        </div>
+
+        <!-- Button to show/hide full word display -->
+        <button id="showFullWordBtn" onclick="toggleFullWordDisplay()">
+          Show Full Sentence
+        </button>
+
+        <!-- Container for full word display -->
+        <div id="fullDisplayContainer">
+          <h2>Full Sentence Display</h2>
+          <div id="fullSignOutput"></div>
+        </div>
       </div>
-    </div>
     </section>
+
     <section id="footer">
       <footer>
         <div id="icon">
@@ -134,17 +89,15 @@
         <p>Copyright © 2024 Guess The Sign.com All writes reserved</p>
       </footer>
     </section>
-
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="Javascript/script2.js"></script>
     <script>
-        const burgerMenu = document.querySelector(".burger-menu");
-        const header = document.querySelector(".header");
-  
-        burgerMenu.addEventListener("click", () => {
-          header.classList.toggle("active");
-        });
-      </script>
-    </body>
+      const burgerMenu = document.querySelector(".burger-menu");
+      const header = document.querySelector(".header");
+
+      burgerMenu.addEventListener("click", () => {
+        header.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>

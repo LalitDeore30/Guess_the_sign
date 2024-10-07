@@ -1,80 +1,103 @@
-// Array of sign language images and corresponding answers
-const questions = [
-    { src: 'images/a.png', answer: 'A' },
-    { src: 'images/b.png', answer: 'B' },
-    { src: 'images/c.png', answer: 'C' },
-    { src: 'images/d.png', answer: 'D' },
-    { src: 'images/e.png', answer: 'E' },
-    { src: 'images/f.png', answer: 'F' },
-    { src: 'images/g.png', answer: 'G' },
-    { src: 'images/h.png', answer: 'H' },
-    { src: 'images/i.png', answer: 'I' },
-    { src: 'images/j.png', answer: 'J' },
-    { src: 'images/k.png', answer: 'K' },
-    { src: 'images/l.png', answer: 'L' },
-    { src: 'images/m.png', answer: 'M' },
-    { src: 'images/n.png', answer: 'N' },
-    { src: 'images/o.png', answer: 'O' },
-    { src: 'images/p.png', answer: 'P' },
-    { src: 'images/q.png', answer: 'Q' },
-    { src: 'images/r.png', answer: 'R' },
-    { src: 'images/s.png', answer: 'S' },
-    { src: 'images/t.png', answer: 'T' },
-    { src: 'images/u.png', answer: 'U' },
-    { src: 'images/v.png', answer: 'V' },
-    { src: 'images/w.png', answer: 'W' },
-    { src: 'images/x.png', answer: 'X' },
-    { src: 'images/y.png', answer: 'Y' },
-    { src: 'images/z.png', answer: 'Z' },
-    // words and sentences
-    { src: 'images/hello.png', answer: 'HELLO' },
-    { src: 'images/thank_you.png', answer: 'THANK YOU' },
-    { src: 'images/i_love_you.png', answer: 'I LOVE YOU' },
-    { src: 'images/sorry.png', answer: 'SORRY' },
-    { src: 'images/y_r_w.png', answer: 'YOU ARE WELCOME' },
-    { src: 'images/yes.png', answer: 'YES' },
-    { src: 'images/no.png', answer: 'NO' },
-    { src: 'images/house.png', answer: 'HOUSE' },
-    { src: 'images/good_bye.png', answer: 'GOOD BYE' },
-    { src: 'images/family.png', answer: 'FAMILY' }
-];
+function convertToSignLanguage() {
+    let inputText = document
+        .getElementById("textInput")
+        .value.toLowerCase();
+    let outputDiv = document.getElementById("signContainer");
+    let fullOutputDiv = document.getElementById("fullSignOutput");
 
-// Display the corresponding image for the typed input
-function submitAnswer() {
-    let userAnswer = document.getElementById('userInput').value.trim().toUpperCase();
-    let found = false;
+    outputDiv.innerHTML = "";
+    fullOutputDiv.innerHTML = "";
 
-    for (const question of questions) {
-        if (userAnswer === question.answer.replace(/\s+/g, '')) {
-            const signImage = document.getElementById('signImage');
-            signImage.src = question.src;
-            signImage.style.display = 'block'; // Ensure the image is visible
-            document.getElementById('message').textContent = `Displaying: ${question.answer}`;
-            found = true;
+    let delay = 1000; // 1 second delay
+    let index = 0;
 
-            // Hide the image after 10 seconds
-            setTimeout(() => {
-                signImage.style.display = 'none';
-                document.getElementById('message').textContent = ''; // Clear the message
-            }, 10000);
+    function displayNextCharacter() {
+        if (index < inputText.length) {
+            let char = inputText[index];
 
-            break;
+            if (char >= "a" && char <= "z") {
+                let img = document.createElement("img");
+                img.src = "images/" + char + ".png"; // Assuming images are named a.png, b.png, etc.
+                img.alt = char;
+
+                outputDiv.innerHTML = ""; // Clear previous character
+                outputDiv.appendChild(img);
+            } else if (char === " ") {
+                outputDiv.innerHTML = ""; // For space, clear the display (pause effect)
+            }
+
+            index++;
+            setTimeout(displayNextCharacter, delay);
         }
     }
 
-    if (!found) {
-        document.getElementById('message').textContent = 'No matching sign found!';
+    displayNextCharacter();
+
+    let words = inputText.split(" ");
+    words.forEach((word, wordIndex) => {
+        let wordContainer = document.createElement("div");
+        wordContainer.classList.add("word-container");
+
+        for (let i = 0; i < word.length; i++) {
+            let char = word[i];
+            if (char >= "a" && char <= "z") {
+                let img = document.createElement("img");
+                img.src = "images/" + char + ".png";
+                img.alt = char;
+
+                let letter = document.createElement("span");
+                letter.textContent = char;
+
+                wordContainer.appendChild(img);
+                wordContainer.appendChild(letter);
+            }
+        }
+
+        fullOutputDiv.appendChild(wordContainer);
+    });
+}
+
+function toggleFullWordDisplay() {
+    let fullDisplayContainer = document.getElementById(
+        "fullDisplayContainer"
+    );
+    let showFullWordBtn = document.getElementById("showFullWordBtn");
+
+    if (fullDisplayContainer.style.display === "none") {
+        fullDisplayContainer.style.display = "block";
+        showFullWordBtn.textContent = "Hide Full Word";
+    } else {
+        fullDisplayContainer.style.display = "none";
+        showFullWordBtn.textContent = "Show Full Word";
+    }
+}
+
+// Speech recognition
+function startSpeechRecognition() {
+    if (!("webkitSpeechRecognition" in window)) {
+        alert("Sorry, your browser does not support speech recognition.");
+        return;
     }
 
-    document.getElementById('userInput').value = '';  // Clear the input field
-}
+    let recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
 
-// Add letter to input field when clicked on the virtual keypad
-function enterLetter(letter) {
-    document.getElementById('userInput').value += letter;
-}
+    recognition.onstart = function () {
+        document.getElementById("micButton").style.backgroundColor =
+            "#ff4d4d"; // Change mic button color to show it's listening
+    };
 
-function deleteLetter() {
-    const userInput = document.getElementById('userInput');
-    userInput.value = userInput.value.slice(0, -1);  // Remove the last character
+    recognition.onend = function () {
+        document.getElementById("micButton").style.backgroundColor =
+            "#ff6666"; // Revert mic button color when done
+    };
+
+    recognition.onresult = function (event) {
+        let speechResult = event.results[0][0].transcript.toLowerCase();
+        document.getElementById("textInput").value = speechResult;
+    };
+
+    recognition.start();
 }
