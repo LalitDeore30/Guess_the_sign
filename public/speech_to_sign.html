@@ -92,6 +92,27 @@
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="Javascript/script2.js"></script>
     <script>
+      function toggleFullWordDisplay() {
+        let fullDisplayContainer = document.getElementById(
+          "fullDisplayContainer"
+        );
+        let showFullWordBtn = document.getElementById("showFullWordBtn");
+
+        if (
+          fullDisplayContainer.style.display === "none" ||
+          fullDisplayContainer.style.display === ""
+        ) {
+          // Show the full word display
+          fullDisplayContainer.style.display = "block";
+          showFullWordBtn.textContent = "Hide Full Sentence";
+        } else {
+          // Hide the full word display
+          fullDisplayContainer.style.display = "none";
+          showFullWordBtn.textContent = "Show Full Sentence";
+        }
+      }
+    </script>
+    <script>
       const burgerMenu = document.querySelector(".burger-menu");
       const header = document.querySelector(".header");
 
