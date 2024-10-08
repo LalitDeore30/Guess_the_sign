@@ -24,6 +24,8 @@ function convertToSignLanguage() {
     let index = 0; // To keep track of words or letters
     let delay = 1000; // Delay of 1 second between displaying each letter or word
 
+
+
     // Function to use speech synthesis
     function speak(text) {
         const utterance = new SpeechSynthesisUtterance(text);

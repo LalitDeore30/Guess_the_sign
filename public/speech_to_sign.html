@@ -92,6 +92,36 @@
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="Javascript/script2.js"></script>
     <script>
+      function startSpeechRecognition() {
+        // Check if browser supports the Web Speech API
+        if (!("webkitSpeechRecognition" in window)) {
+          alert("Your browser doesn't support speech recognition.");
+          return;
+        }
+
+        // Initialize speech recognition
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = "en-US"; // Set language
+        recognition.interimResults = false; // Get final results only
+        recognition.maxAlternatives = 1; // Only one alternative
+
+        recognition.start();
+
+        recognition.onresult = function (event) {
+          const transcript = event.results[0][0].transcript; // Get recognized text
+          document.getElementById("textInput").value = transcript; // Display in the input field
+        };
+
+        recognition.onerror = function (event) {
+          alert("Error occurred in recognition: " + event.error);
+        };
+
+        recognition.onend = function () {
+          console.log("Speech recognition service disconnected");
+        };
+      }
+    </script>
+    <script>
       function toggleFullWordDisplay() {
         let fullDisplayContainer = document.getElementById(
           "fullDisplayContainer"
