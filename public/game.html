@@ -8,35 +8,39 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="Style/styles.css" />
+    <link rel="stylesheet" href="Style/game.css" />
   </head>
   <body>
-    <section>
-      <div class="box">
-        <div class="header">
-          <a href="../index.html" class="logo"
-            ><img src="images/community.png"
-          /></a>
+    <div class="box">
+      <div class="header">
+        <a href="#home" class="logo"><img src="images/community.png" /></a>
 
-          <!-- Burger menu -->
-          <div class="burger-menu" onclick="toggleNavbar()">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
-
-          <!-- Navigation links -->
-          <nav class="navbar">
-            <a href="../index.html" style="--i: 1" class="active">Home</a>
-            <a href="Learn.html" style="--i: 2">Learn</a>
-            <a href="game.html" style="--i: 3">Game</a>
-            <a href="speech_to_sign.html" style="--i: 4">Speech To Sign</a>
-            <a href="Test.html" style="--i: 5">Test</a>
-          </nav>
+        <!-- Burger menu -->
+        <div class="burger-menu" onclick="toggleNavbar()">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
         </div>
-      </div>
-    </section>
 
+        <!-- Navigation links -->
+        <nav class="navbar">
+          <a href="../index.html" style="--i: 1" class="active">Home</a>
+          <a href="Learn.html" style="--i: 2">Learn</a>
+          <a href="game.html" style="--i: 3">Game</a>
+          <a href="speech_to_sign.html" style="--i: 4">Speech To Sign</a>
+          <a href="Test.html" style="--i: 5">Test</a>
+        </nav>
+      </div>
+    </div>
+    <div class="game-body">
+      <h1 class="game-title">Memory Game</h1>
+
+      <div class="grid-container"></div>
+      <p class="game-score">Score: <span class="score"></span></p>
+      <div class="actions">
+        <button onclick="restart()">Restart</button>
+      </div>
+    </div>
     <section id="footer">
       <footer>
         <div id="icon">
@@ -59,7 +63,7 @@
     </section>
 
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="Javascript/script.js"></script>
+    <script src="Javascript/script4.js"></script>
     <script>
       const burgerMenu = document.querySelector(".burger-menu");
       const header = document.querySelector(".header");
