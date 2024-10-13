@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Language Quiz Game</title>
+    <title>Contact Form</title>
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="Style/game.css" />
+    <link rel="stylesheet" href="Style/styles.css" />
+    <link rel="stylesheet" href="Style/contact.css" />
   </head>
   <body>
     <div class="box">
@@ -33,15 +34,54 @@
         </nav>
       </div>
     </div>
-    <div class="game-body">
-      <h1 class="glass-heading">Memory Game</h1>
 
-      <div class="grid-container"></div>
-      <p class="game-score">Score: <span class="score"></span></p>
-      <div class="actions">
-        <button id="submitAnswer" onclick="restart()">Restart</button>
+    <section id="form">
+      <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" />
+            <i class="bx bx-microphone mic-icon" id="mic-name"></i>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+            />
+            <i class="bx bx-microphone mic-icon" id="mic-email"></i>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Your Phone Number"
+            />
+            <i class="bx bx-microphone mic-icon" id="mic-phone"></i>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+            ></textarea>
+            <i class="bx bx-microphone mic-icon" id="mic-message"></i>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
       </div>
-    </div>
+    </section>
+
     <section id="footer">
       <footer>
         <div id="icon">
@@ -53,25 +93,15 @@
             <a href=""></a>
             <i class="bx bxl-facebook"></i>
           </div>
-
           <div class="ic1">
             <a href=""></a>
             <i class="bx bxl-whatsapp"></i>
           </div>
         </div>
-        <p>Copyright © 2024 Guess The Sign.com All writes reserved</p>
+        <p>Copyright © 2024 Guess The Sign.com All rights reserved</p>
       </footer>
     </section>
-
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="Javascript/script4.js"></script>
-    <script>
-      const burgerMenu = document.querySelector(".burger-menu");
-      const header = document.querySelector(".header");
-
-      burgerMenu.addEventListener("click", () => {
-        header.classList.toggle("active");
-      });
-    </script>
+    <script src="Javascript/script5.js"></script>
   </body>
 </html>
