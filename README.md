@@ -2,7 +2,7 @@
 
 🎯 **"Guess the Sign"** is an interactive web application designed to **educate, empower, and connect** individuals through **sign language**. Whether you're deaf, hard of hearing, or someone who wants to learn and communicate better—this app is for you!
 
-🌐 [Live Demo](https://your-deployed-app-link.com) &nbsp;
+🌐 [Live Demo](https://lalitdeore30.github.io/Guess_the_sign/) &nbsp;
 ---
 
 ## 📚 Features
