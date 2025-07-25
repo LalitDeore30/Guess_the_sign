@@ -57,7 +57,7 @@ This project is dedicated to:
 - HTML5 / CSS3 / JavaScript  
 - Web Speech API (for voice input)  
 - Responsive UI Design  
-- Deployed using **[your deployment platform, e.g., Vercel / Netlify / GitHub Pages]**
+- Deployed using **[GitHub Pages]**
 
 ---
 
